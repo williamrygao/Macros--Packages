@@ -1,0 +1,237 @@
+%%% Blackboard %%%
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\Ham}{\mathbb{H}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZP}{\mathbb{ZP}}
+
+%%% Script %%%
+\newcommand{\sB}{\mathscr{B}}
+\newcommand{\sD}{\mathscr{D}}
+\newcommand{\sP}{\mathscr{P}}
+
+%%% Calligraphic %%%
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cM}{\mathcal{M}}
+\newcommand{\cO}{\mathcal{O}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cT}{\mathcal{T}}
+
+%%% Fraktur %%%
+% Commutative Algebra
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fI}{\mathfrak{I}}
+\newcommand{\fJ}{\mathfrak{J}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+\newcommand{\nrad}{\mathfrak{N}}
+\newcommand{\jrad}{\mathfrak{R}}
+\newcommand{\fU}{\mathfrak{U}}
+
+% Lie Algebra
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fh}{\mathfrak{h}}
+\newcommand{\fo}{\mathfrak{o}}
+\newcommand{\gl}{\mathfrak{gl}}
+\newcommand{\fsl}{\mathfrak{sl}}
+\newcommand{\so}{\mathfrak{so}}
+
+% Complex
+\renewcommand{\Re}{\mathfrak{Re}}
+\renewcommand{\Im}{\mathfrak{Im}}
+
+%%% Operators %%%
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\aff}{aff}
+\DeclareMathOperator{\Alt}{Alt}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Bd}{Bd}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\cop}{cop}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Diff}{Diff}
+\DeclareMathOperator{\dr}{dR}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\gr}{gr}
+\DeclareMathOperator{\Hess}{Hess}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\len}{len}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\OO}{O}
+\DeclareMathOperator{\Obj}{Obj}
+\DeclareMathOperator{\opp}{op}
+\DeclareMathOperator{\Open}{Open}
+\DeclareMathOperator{\pr}{pr}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\red}{red}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\std}{std}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Th}{Th}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Tot}{Tot}
+\DeclareMathOperator{\U}{U}
+
+%%% Categories %%%
+\newcommand{\Ab}{\mathsf{Ab}}
+\newcommand{\Aff}{\mathsf{Aff}}
+\newcommand{\Alg}{\mathsf{Alg}}
+\newcommand{\Fun}{\mathsf{Fun}}
+\newcommand{\grAlg}{\mathsf{grAlg}}
+\newcommand{\Grp}{\mathsf{Grp}}
+\newcommand{\LRS}{\mathsf{LocRingSp}}
+\newcommand{\Mfd}{\mathsf{Mfd}}
+\NewDocumentCommand{\Mod}{o g}{
+  \IfValueTF{#1}{
+    \IfValueTF{#2}
+      {#1\text{-}\mathsf{Mod}\text{-}#2}
+      {#1\text{-}\mathsf{Mod}}
+  }{
+    \IfValueTF{#2}
+      {\mathsf{Mod}\text{-}#2}
+      {\mathsf{Mod}}
+  }
+}
+\newcommand{\QCoh}{\mathsf{QCoh}}
+\newcommand{\Ring}{\mathsf{Ring}}
+\newcommand{\Sch}{\mathsf{Sch}}
+\newcommand{\Sets}{\mathsf{Set}}
+\newcommand{\Sh}{\mathsf{Sh}}
+\newcommand{\Top}{\mathsf{Top}}
+\newcommand{\Var}{\mathsf{Var}}
+\newcommand{\Vect}{\mathsf{Vect}}
+
+%%% Big %%%
+\newcommand{\Wedge}{\bigwedge}
+\newcommand{\Oplus}{\bigoplus}
+\newcommand{\Otimes}{\bigotimes}
+\newcommand{\Sqcup}{\bigsqcup}
+\renewcommand{\Cap}{\bigcap}
+\renewcommand{\Cup}{\bigcup}
+
+%%% Arrows %%%
+\newcommand{\To}{\longrightarrow}
+\newcommand{\Mapsto}{\longmapsto}
+\newcommand{\surj}{\twoheadrightarrow}
+\newcommand{\Surj}{\relbar\joinrel\twoheadrightarrow}
+\newcommand{\inj}{\hookrightarrow}
+\newcommand{\Inj}{\lhook\joinrel\longrightarrow}
+\newcommand{\bij}{\longleftrightarrow}
+\newcommand{\iso}{\stackrel{\sim}{\to}}
+\newcommand{\Iso}{\stackrel{\sim}{\To}}
+\newcommand{\imm}{\looparrowright}
+\newcommand{\mono}{\rightarrowtail}
+\newcommand{\poon}{\rightharpoonup}
+\newcommand{\Poon}{\relbar\joinrel\rightharpoonup}
+\newcommand{\pathto}{\rightsquigarrow}
+\newextarrow{\Toto}{{20}{20}{20}{20}}
+   {\bigRelbar\bigRelbar{\bigtwoarrowsleft\rightarrow\rightarrow}}
+
+% Action
+\DeclareFontFamily{U}{mathb}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathb}{m}{n}{
+      <5> <6> <7> <8> <9> <10> gen * mathb
+      <10.95> mathb10 <12> <14.4> <17.28> <20.74> <24.88> mathb12
+      }{}
+\DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+\DeclareMathSymbol{\righttoleftarrow}{3}{mathb}{"FD}
+\newcommand{\acts}{\mathrel{\raisebox{0.2ex}{\reflectbox{$\righttoleftarrow$}}}}
+
+% Open Immersion
+\DeclareRobustCommand{\opim}{
+  \mathrel{\vphantom{\Inj}\mathpalette\circle@arrow\relax}
+}
+\newcommand{\circle@arrow}[2]{
+    \m@th
+    \ooalign{%
+    \hidewidth$#1\circ\mkern1mu$\hidewidth\cr
+    $#1\Inj$\cr}
+}
+
+% Closed Immersion
+\newcommand{\clim}{
+  \mathrel{\ooalign{%
+  $\Inj$\cr
+  \hidewidth\raisebox{0.05ex}{\rotatebox{60}{\rule{1.2ex}{0.4pt}}}\hidewidth}}
+}
+
+%%% Accents %%%
+\newcommand{\ol}{\overline}
+\newcommand{\jbar}{\ol{\jmath}}
+\newcommand{\zbar}{\ol{z}}
+\newcommand{\ul}{\underline}
+\newcommand{\vect}[1]{\accentset{\rightharpoonup}{#1}}
+
+%%% Miscellaneous %%%
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\newcommand{\del}{\partial}
+\newcommand{\dbar}{\ol{\partial}}
+\newcommand{\tv}{\pitchfork}
+
+\newcommand{\ceq}{\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+                     \hbox{\scriptsize.}\hbox{\scriptsize.}}}%
+                     =}
+\newcommand{\eqc}{=\mathrel{\vcenter{\baselineskip0.5ex \lineskiplimit0pt
+\hbox{\scriptsize.}\hbox{\scriptsize.}}}}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+% To write ||| x |||, use \vertiii{x}.
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+\right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+% To write f|A, write \restr{f}{A}.
+\newcommand\restr[2]{{
+  \left.\kern-\nulldelimiterspace
+  #1
+  \vphantom{\big|} 
+  \right|_{#2}
+  }}
+
+% Mirror image of \colon from amsmath
+\DeclareRobustCommand{\noloc}{%
+\mskip6muplus1mu
+\mathpunct{:}%
+\nonscript\mkern-\thinmuskip
+\nobreak\mskip2mu
+\relax}

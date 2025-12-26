@@ -1,0 +1,242 @@
+%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{etoolbox}
+\usepackage{braket}
+\usepackage{epigraph}
+\setlength\epigraphrule{0pt}
+\usepackage{xparse}
+% \usepackage{titling}
+% \renewcommand*{\maketitlehooka}{\color{DarkRed}}
+
+% Graphics
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{centernot}
+\usepackage{mathdots}
+\usepackage{todonotes}
+
+\usepackage{tikz, tikz-cd}
+\usetikzlibrary{matrix,calc,positioning,arrows,decorations.pathreplacing,patterns,arrows,decorations.markings}
+\tikzcdset{
+	open/.code     = {\tikzcdset{hook, circled};},
+	closed/.code   = {\tikzcdset{hook, slashed};},
+	open'/.code    = {\tikzcdset{hook', circled};},
+	closed'/.code  = {\tikzcdset{hook', slashed};},
+	circled/.code  = {\tikzcdset{markwith = {\draw (0,0) circle (.375ex);}};},
+	slashed/.code  = {\tikzcdset{markwith = {\draw[-] (-.4ex,-.4ex) -- (.4ex,.4ex);}};},
+	markwith/.code ={
+		\pgfutil@ifundefined%
+		{tikz@library@decorations.markings@loaded}%
+		{\pgfutil@packageerror{tikz-cd}{You need to say %
+		\string\usetikzlibrary{decorations.markings} to use arrows with markings}{}}{}%
+		\pgfkeysalso{/tikz/postaction = {
+		/tikz/decorate,
+		/tikz/decoration={markings, mark = at position 0.5 with {#1}}}
+		}
+	},
+	curarrow/.style={
+	rounded corners=8pt,
+	execute at begin to={every node/.style={fill=red}},
+	to path={-- ([xshift=50pt]\tikztostart.center)
+	|- (#1) node[fill=white] {$\delta$}
+	-| ([xshift=-40pt]\tikztotarget.center)
+	-- (\tikztotarget)}
+	}
+}
+
+\usepackage[cmtip,all]{xy}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[svgnames,dvipsnames,x11names]{xcolor}
+\usepackage{accents}
+
+% Font
+\usepackage{mathrsfs}
+\usepackage[none]{hyphenat}
+\usepackage{microtype}
+\usepackage{manfnt}
+\usepackage[cal=stixtwoplain, scr=boondoxo, bb=pazo]{mathalpha}
+\usepackage{extpfeil}
+
+%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%
+\usepackage{thmtools}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,skins,hooks}
+
+% patch tcolorbox to support continuation of a paragraph after box
+% from https://tex.stackexchange.com/questions/568782/
+\tcbset{
+	after app={%
+		\ifx\tcb@drawcolorbox\tcb@drawcolorbox@breakable
+		\else
+		% add only when not breakable
+		\@endpetrue
+		\fi
+	}
+}
+% for breakable
+\appto\tcb@use@after@lastbox{\@endpetrue\@doendpe}
+% END patch tcolorbox for continuation of paragraph
+
+\declaretheoremstyle[
+	headfont=\bfseries\color{DarkRed},
+	headpunct={\\[5pt]},
+	postheadspace={0em},
+]{thmtheorem}
+
+\declaretheoremstyle[
+	headfont=\bfseries\color{DarkSlateBlue},
+	headpunct={\\[5pt]},
+	postheadspace={0em},
+]{thmdefinition}
+
+\declaretheoremstyle[
+	headfont=\bfseries\color{Black},
+	headpunct={.},
+	postheadspace={0.5em},
+]{thmexample}
+
+\tcbset{
+    theorem box/.style={
+		enhanced,
+		arc=5pt,
+		outer arc=6pt,
+		colframe=DarkRed,
+		colback=Salmon!5,
+		boxrule=1pt,
+		before skip=1.5em,
+		after skip=1.5em,
+		top=0.75em,
+		bottom=0.75em,
+		left=1em,
+		right=1em,
+	},
+    definition box/.style={
+		enhanced,
+		sharp corners,
+		arc=9pt,
+		outer arc=10pt,
+		colframe=DarkSlateBlue,
+		colback=SlateBlue!5,
+		boxrule=0.5pt,
+		before skip=1.5em,
+		after skip=1.5em,
+		breakable,
+		top=0.75em,
+		bottom=0.75em,
+		left=1em,
+		right=1em,
+	},
+    example box/.style={
+		enhanced,
+		boxrule=0.15pt,
+		sharp corners,
+		before skip=1.5em,
+		after skip=1.5em,
+		borderline west={1.5pt}{0pt}{Black},
+		colback=Silver!5,
+		breakable,
+		top=0.75em,
+		bottom=0.75em,
+		left=1em,
+		right=1em,
+	}
+}
+
+\declaretheorem[style=thmtheorem,name=Theorem,numberwithin=section]{theorem}
+\tcolorboxenvironment{theorem}{theorem box}
+
+\declaretheorem[style=thmtheorem,name=Lemma,sibling=theorem]{lemma}
+\tcolorboxenvironment{lemma}{theorem box}
+
+\declaretheorem[style=thmtheorem,name=Corollary,sibling=theorem]{corollary}
+\tcolorboxenvironment{corollary}{theorem box}
+
+\declaretheorem[style=thmtheorem,name=Proposition,sibling=theorem]{proposition}
+\tcolorboxenvironment{proposition}{theorem box}
+
+\declaretheorem[style=thmdefinition,name=Definition,sibling=theorem]{definition}
+\tcolorboxenvironment{definition}{definition box}
+
+\declaretheorem[style=thmexample,name=Example,sibling=theorem]{example}
+\tcolorboxenvironment{example}{example box}
+
+\declaretheorem[style=thmexample,name=Counterexample,sibling=theorem]{counterexample}
+\tcolorboxenvironment{counterexample}{example box}
+
+\declaretheorem[style=definition,name=Exercise,sibling=theorem]{exercise}
+
+\declaretheorem[style=remark,name=Remark,sibling=theorem]{remark}
+
+% Numbering
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+% Enumerate
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=(\arabic*), ref=\arabic*, font=\normalfont}
+\newlist{alphenum}{enumerate}{1}
+\setlist[alphenum]{label=(\alph*), ref=(\alph*)}
+
+\newlist{romenum}{enumerate}{1}
+\setlist[romenum]{label=(\roman*), ref=(\roman*)}
+
+\newlist{Romenum}{enumerate}{1}
+\setlist[Romenum]{label=(\Roman*), ref=(\Roman*)}
+
+\newlist{arabenum}{enumerate}{1}
+\setlist[arabenum]{label=(\arabic*), ref=(\arabic*), font=\normalfont}
+
+\newlist{steps}{enumerate}{1}
+\setlist[steps]{label=Step \arabic*., ref=(\arabic*)}
+
+%%%%%%%%%%%%%%%%%%% MARGINS %%%%%%%%%%%%%%%%%%%
+%%% Page %%%
+\usepackage[twoside, top=4cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+
+% Head & Foot
+\usepackage[twoside]{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhfoffset[L]{0cm}
+\fancyhfoffset[R]{0cm}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[LE]{\textbf{\thepage}\qquad \thetitle}
+\fancyhead[RO]{\rightmark \qquad \textbf{\thepage}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+
+% Captions
+\usepackage{caption}
+\captionsetup{width=0.75\textwidth}
+
+%%%%%%%%%%%%%%%%% FILES %%%%%%%%%%%%%%%%%%%
+\usepackage{subfiles}
+\usepackage{standalone}
+
+%%%%%%%%%%%%%%%%%%% LINKS %%%%%%%%%%%%%%%%%%%
+\usepackage[pdfusetitle]{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor=DarkRed,
+    citecolor=DarkRed,
+    urlcolor=DarkBlue,
+	hypertexnames=false
+}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{prerex}
+
+\crefname{alphenumi}{condition}{conditions}
+\Crefname{alphenumi}{Condition}{Conditions}
+\crefname{arabenumi}{conclusion}{conclusions}
+\Crefname{arabenumi}{Conclusion}{Conclusions}
+\crefname{romenumi}{condition}{conditions}
+\Crefname{romenumi}{Condition}{Conditions}
+\crefname{Romenumi}{desideratum}{desiderata}
+\Crefname{Romenumi}{Desideratum}{Desiderata}
+
+%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%%
+\usepackage{natbib}
