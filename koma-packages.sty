@@ -1,15 +1,11 @@
 %%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%
-\usepackage{amsmath}
+\usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{amsthm}
-\usepackage{mathtools}
 \usepackage{etoolbox}
 \usepackage{braket}
 \usepackage{epigraph}
 \setlength\epigraphrule{0pt}
-\usepackage{xparse}
-% \usepackage{titling}
-% \renewcommand*{\maketitlehooka}{\color{DarkRed}}
 
 % Graphics
 \usepackage{physics}
@@ -17,9 +13,10 @@
 \usepackage{centernot}
 \usepackage{mathdots}
 \usepackage{todonotes}
+\usepackage[svgnames,dvipsnames,x11names]{xcolor}
 
 \usepackage{tikz, tikz-cd}
-\usetikzlibrary{matrix,calc,positioning,arrows,decorations.pathreplacing,patterns,arrows,decorations.markings}
+\usetikzlibrary{matrix,calc,positioning,arrows.meta,decorations.pathreplacing,decorations.markings,patterns}
 \tikzcdset{
 	open/.code     = {\tikzcdset{hook, circled};},
 	closed/.code   = {\tikzcdset{hook, slashed};},
@@ -51,11 +48,9 @@
 \usepackage{float}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
-\usepackage[svgnames,dvipsnames,x11names]{xcolor}
 \usepackage{accents}
 
 % Font
-\usepackage{mathrsfs}
 \usepackage[none]{hyphenat}
 \usepackage{microtype}
 \usepackage{manfnt}
@@ -83,19 +78,19 @@
 % END patch tcolorbox for continuation of paragraph
 
 \declaretheoremstyle[
-	headfont=\bfseries\color{DarkRed},
+	headfont=\usefont{T1}{ppl}{b}{n}\bfseries\color{DarkRed},
 	headpunct={\\[5pt]},
 	postheadspace={0em},
 ]{thmtheorem}
 
 \declaretheoremstyle[
-	headfont=\bfseries\color{DarkSlateBlue},
+	headfont=\usefont{T1}{ppl}{b}{n}\bfseries\color{DarkSlateBlue},
 	headpunct={\\[5pt]},
 	postheadspace={0em},
 ]{thmdefinition}
 
 \declaretheoremstyle[
-	headfont=\bfseries\color{Black},
+	headfont=\usefont{T1}{ppl}{b}{n}\bfseries\color{Black},
 	headpunct={.},
 	postheadspace={0.5em},
 ]{thmexample}
@@ -194,24 +189,24 @@
 \newlist{steps}{enumerate}{1}
 \setlist[steps]{label=Step \arabic*., ref=(\arabic*)}
 
-%%%%%%%%%%%%%%%%%%% MARGINS %%%%%%%%%%%%%%%%%%%
-%%% Page %%%
-\usepackage[twoside, top=4cm, bottom=3cm, left=3cm, right=3cm]{geometry}
+%%%%%%%%%%%%%%%%%%% LAYOUT (KOMA) %%%%%%%%%%%%%%%%%%%
+\KOMAoptions{twoside,DIV=12,BCOR=12mm}
+\setlength{\topmargin}{3mm}
+\usepackage[automark,pagestyleset=standard,markcase=used]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\addtokomafont{pagenumber}{\normalfont\bfseries}
+\addtokomafont{pagehead}{\normalfont}
+\setkomafont{title}{\usefont{T1}{ppl}{b}{n}\bfseries\LARGE}
+\setkomafont{disposition}{\usefont{T1}{ppl}{b}{n}\bfseries}
 
-% Head & Foot
-\usepackage[twoside]{fancyhdr}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhfoffset[L]{0cm}
-\fancyhfoffset[R]{0cm}
-\renewcommand{\headrulewidth}{0pt}
-\fancyhead[LE]{\textbf{\thepage}\qquad \thetitle}
-\fancyhead[RO]{\rightmark \qquad \textbf{\thepage}}
-\renewcommand{\sectionmark}[1]{\markright{\thesection\quad #1}}
+\cfoot[\pagemark]{}
+
+\rehead{\leftmark}
+\lohead{\rightmark}
 
 % Captions
-\usepackage{caption}
-\captionsetup{width=0.75\textwidth}
+\KOMAoptions{captions=tableheading}
+\setcapwidth{0.75\textwidth}
 
 %%%%%%%%%%%%%%%%% FILES %%%%%%%%%%%%%%%%%%%
 \usepackage{subfiles}
@@ -239,4 +234,4 @@
 \Crefname{Romenumi}{Desideratum}{Desiderata}
 
 %%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%%
-\usepackage{biblatex}
+\usepackage[backend=biber, style=alphabetic]{biblatex}

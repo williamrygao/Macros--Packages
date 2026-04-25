@@ -1,0 +1,149 @@
+%%%%%%%%%%%%%%%%%%% PACKAGES %%%%%%%%%%%%%%%%%%%
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{etoolbox}
+\usepackage{braket}
+\usepackage{epigraph}
+\setlength\epigraphrule{0pt}
+
+% Graphics
+\usepackage{physics}
+\usepackage{graphicx}
+\usepackage{centernot}
+\usepackage{mathdots}
+\usepackage{todonotes}
+\usepackage[svgnames,dvipsnames,x11names]{xcolor}
+
+\usepackage{tikz, tikz-cd}
+\usetikzlibrary{matrix,calc,positioning,arrows.meta,decorations.pathreplacing,decorations.markings,patterns}
+\tikzcdset{
+	open/.code     = {\tikzcdset{hook, circled};},
+	closed/.code   = {\tikzcdset{hook, slashed};},
+	open'/.code    = {\tikzcdset{hook', circled};},
+	closed'/.code  = {\tikzcdset{hook', slashed};},
+	circled/.code  = {\tikzcdset{markwith = {\draw (0,0) circle (.375ex);}};},
+	slashed/.code  = {\tikzcdset{markwith = {\draw[-] (-.4ex,-.4ex) -- (.4ex,.4ex);}};},
+	markwith/.code ={
+		\pgfutil@ifundefined%
+		{tikz@library@decorations.markings@loaded}%
+		{\pgfutil@packageerror{tikz-cd}{You need to say %
+		\string\usetikzlibrary{decorations.markings} to use arrows with markings}{}}{}%
+		\pgfkeysalso{/tikz/postaction = {
+		/tikz/decorate,
+		/tikz/decoration={markings, mark = at position 0.5 with {#1}}}
+		}
+	},
+	curarrow/.style={
+	rounded corners=8pt,
+	execute at begin to={every node/.style={fill=red}},
+	to path={-- ([xshift=50pt]\tikztostart.center)
+	|- (#1) node[fill=white] {$\delta$}
+	-| ([xshift=-40pt]\tikztotarget.center)
+	-- (\tikztotarget)}
+	}
+}
+
+\usepackage[cmtip,all]{xy}
+\usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{accents}
+
+% Font
+\usepackage[none]{hyphenat}
+\usepackage{microtype}
+\usepackage{manfnt}
+\usepackage[cal=stixtwoplain, scr=boondoxo, bb=pazo]{mathalpha}
+\usepackage{extpfeil}
+
+%%%%%%%%%%%%%%%%%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%
+\usepackage{thmtools}
+
+\declaretheorem[style=theorem,name=Theorem,numberwithin=section]{theorem}
+\declaretheorem[style=theorem,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=theorem,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=theorem,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=definition,name=Definition,sibling=theorem]{definition}
+\declaretheorem[style=example,name=Example,sibling=theorem]{example}
+\declaretheorem[style=example,name=Counterexample,sibling=theorem]{counterexample}
+\declaretheorem[style=definition,name=Exercise,sibling=theorem]{exercise}
+\declaretheorem[style=remark,name=Remark,sibling=theorem]{remark}
+
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \newtheorem{corollary}[theorem]{Corollary}
+
+% \theoremstyle{definition}
+% \newtheorem{definition}[theorem]{Definition}
+% \newtheorem{example}[theorem]{Example}
+
+% \theoremstyle{remark}
+% \newtheorem{remark}[theorem]{Remark}
+
+% Numbering
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+
+% Enumerate
+\usepackage{enumitem}
+\setlist[enumerate,1]{label=(\arabic*), ref=\arabic*, font=\normalfont}
+\newlist{alphenum}{enumerate}{1}
+\setlist[alphenum]{label=(\alph*), ref=(\alph*)}
+
+\newlist{romenum}{enumerate}{1}
+\setlist[romenum]{label=(\roman*), ref=(\roman*)}
+
+\newlist{Romenum}{enumerate}{1}
+\setlist[Romenum]{label=(\Roman*), ref=(\Roman*)}
+
+\newlist{arabenum}{enumerate}{1}
+\setlist[arabenum]{label=(\arabic*), ref=(\arabic*), font=\normalfont}
+
+\newlist{steps}{enumerate}{1}
+\setlist[steps]{label=Step \arabic*., ref=(\arabic*)}
+
+%%%%%%%%%%%%%%%%%%% LAYOUT (KOMA) %%%%%%%%%%%%%%%%%%%
+\KOMAoptions{twoside,DIV=12,BCOR=12mm}
+\setlength{\topmargin}{3mm}
+\usepackage[automark,pagestyleset=standard,markcase=used]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\addtokomafont{pagenumber}{\normalfont\bfseries}
+\addtokomafont{pagehead}{\normalfont}
+\setkomafont{title}{\usefont{T1}{ppl}{b}{n}\bfseries\LARGE}
+\setkomafont{disposition}{\usefont{T1}{ppl}{b}{n}\bfseries}
+
+\cfoot[\pagemark]{}
+
+\rehead{\leftmark}
+\lohead{\rightmark}
+
+% Captions
+\KOMAoptions{captions=tableheading}
+\setcapwidth{0.75\textwidth}
+
+%%%%%%%%%%%%%%%%% FILES %%%%%%%%%%%%%%%%%%%
+\usepackage{subfiles}
+\usepackage{standalone}
+
+%%%%%%%%%%%%%%%%%%% LINKS %%%%%%%%%%%%%%%%%%%
+\usepackage[pdfusetitle]{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor=DarkRed,
+    citecolor=DarkRed,
+    urlcolor=DarkBlue,
+	hypertexnames=false
+}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{prerex}
+
+\crefname{alphenumi}{condition}{conditions}
+\Crefname{alphenumi}{Condition}{Conditions}
+\crefname{arabenumi}{conclusion}{conclusions}
+\Crefname{arabenumi}{Conclusion}{Conclusions}
+\crefname{romenumi}{condition}{conditions}
+\Crefname{romenumi}{Condition}{Conditions}
+\crefname{Romenumi}{desideratum}{desiderata}
+\Crefname{Romenumi}{Desideratum}{Desiderata}
